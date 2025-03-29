@@ -1,6 +1,10 @@
 services:
-  - name: CyberCTF
-    env: node
-    buildCommand: npm install
-    startCommand: npm start
+  - type: web
+    name: cyberctf-backend
+    env: python
     plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app"
+    envVars:
+      - key: PORT
+        value: 10000
